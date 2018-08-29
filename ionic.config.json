@@ -1,0 +1,8 @@
+{
+  "name": "nzBirds",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "e885a091"
+}
