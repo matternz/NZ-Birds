@@ -1,14 +1,56 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Birds</ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-buttons>
+  <button ion-button navPush="AddBirdPage">Add Bird</button>
+  <button ion-button navPush="AddSpeciesPage">Add Species</button>
+</ion-buttons>
+
+<ion-list>
+  <ion-item>
+    <ion-label>Show birds from species</ion-label>
+    <ion-select (ionChange)="onContextChange($event)" [(ngModel)]="species" multiple="false"
+    cancelText="cancel" okText="Show species from selected">
+      <ion-option *ngFor="let species of speciesList$ | async" detail-push>{{species.name}}</ion-option>
+     </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+    <ion-list-header>
+      Birds: 
+    </ion-list-header>
+  
+    <ion-item
+      *ngFor="let bird of birdList$ | async" detail-push navPush="ViewBirdPage"[navParams]="{bird:bird}">
+      {{bird.name}}
+    </ion-item>
+  </ion-list>
+  
+  <ion-buttons>
+    <button ion-button navPush="LoginPage">
+      Login
+    </button>
+    <button ion-button (click)="showAllBirds()">
+        Show All Birds
+    </button>
+    <button ion-button navPush="InvitePage">
+        Invite
+    </button>
+  </ion-buttons>
+
 </ion-content>
+
