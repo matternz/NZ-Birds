@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { BirdsService } from '../../services/birds.service';
+import { Bird } from '../../models/bird.model'
 /**
  * Generated class for the EditBirdPage page.
  *
@@ -15,11 +16,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EditBirdPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  bird: Bird;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private birds: BirdsService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditBirdPage');
+  ionViewWillLoad() {
+    this.bird = this.navParams.get('bird');
+  }
+
+  saveBird(bird: Bird) {
+    this.birds.editBird(bird).then(() => {
+      this.navCtrl.setRoot('HomePage');
+    });
+  }
+
+  deleteBird(bird: Bird) {
+    this.birds.removeBird(bird).then(() => {
+      this.navCtrl.setRoot('HomePage');
+    });
   }
 
 }

@@ -19,7 +19,8 @@ export class AddBirdPage {
 
   bird: Bird = {
     name: '',
-    species: ''
+    species: '',
+    description: ''
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams,

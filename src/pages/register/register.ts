@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Species } from '../../models/species.model';
+import { BirdsService } from '../../services/birds.service';
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,11 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  species: Species = {
+    name: ''
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private regSpecies: BirdsService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  addSpecies(species: Species) {
+    this.regSpecies.addSpecies(species).then(ref => {
+      this.navCtrl.setRoot('HomePage', {key: ref.key});
+    });
   }
 
 }

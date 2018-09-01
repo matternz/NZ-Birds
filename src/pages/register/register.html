@@ -7,12 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>RegisterPage</ion-title>
+    <ion-title>Register Species</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Species Name:</ion-label>
+    <ion-input [(ngModel)]="species.name" placeholder="name..."></ion-input>
+  </ion-item>
+  <button ion-button block clear (click)="addSpecies(species)">Add species</button>
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Bird } from '../../models/bird.model';
 
 /**
  * Generated class for the ViewBirdPage page.
@@ -14,12 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'view-bird.html',
 })
 export class ViewBirdPage {
+  bird: Bird;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ViewBirdPage');
+  ionViewWillLoad() {
+    this.bird = this.navParams.get('bird');
   }
 
 }

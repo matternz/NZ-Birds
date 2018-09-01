@@ -7,12 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ViewBirdPage</ion-title>
+    <ion-title>{{bird?.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-buttons>
+    <button ion-button detail-push navPush="EditBirdPage" [navParams]="{bird: bird}">Edit Bird</button>
+  </ion-buttons>
+  <!-- <ion-item class="picture">
+    add ion image? and use [{ngModel}]="bird.image"
+  </ion-item> -->
+  <!-- <ion-item class="description">
+    <ion-textarea readonly [{ngModel}]-"bird.description"></ion-textarea>
+  </ion-item> -->
 
+  <ion-item>
+      <ion-label>Name: </ion-label>
+      <ion-input [(ngModel)]="bird.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Species: </ion-label>
+    <ion-input [(ngModel)]="bird.species"></ion-input>
+  </ion-item>
+
+  <ion-item class="description">
+    <ion-textarea readonly [(ngModel)]="bird.description">
+    </ion-textarea>
+  </ion-item>
+  
 </ion-content>

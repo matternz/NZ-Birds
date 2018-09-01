@@ -7,12 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>EditBirdPage</ion-title>
+    <ion-title>Editing: {{bird?.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <button ion-button block clear (click)="saveBird(bird)">Save</button>
+  <button ion-button block clear (click)="deleteBird(bird)">Delete</button>
+  
+  <ion-item>
+      <ion-label>Name: </ion-label>
+      <ion-input [(ngModel)]="bird.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Species: </ion-label>
+    <ion-input [(ngModel)]="bird.species"></ion-input>
+  </ion-item>
+
+  <ion-item class="description">
+    <ion-label>Description: </ion-label>
+    <ion-textarea [(ngModel)]="bird.description"></ion-textarea>
+  </ion-item>
 
 </ion-content>
