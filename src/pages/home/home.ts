@@ -21,9 +21,11 @@ export class HomePage {
 
   birdsList$: Observable<Bird[]>;
   speciesList$: Observable<Species[]>;
+
   species: Species = {
     name: ''
   }
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
   private birdsService: BirdsService) {
     this.birdsList$ = this.birdsService.getBirdsList().snapshotChanges().map(changes => {

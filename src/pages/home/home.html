@@ -21,11 +21,13 @@
 
 <ion-list>
   <ion-item>
-    <ion-label>Show birds from species</ion-label>
+    <ion-label>Show birds from species:</ion-label>
     <ion-select (ionChange)="onContextChange($event)" [(ngModel)]="species" multiple="false"
     cancelText="cancel" okText="Show species from selected">
-      <ion-option *ngFor="let species of speciesList$ | async" detail-push>{{species.name}}</ion-option>
-     </ion-select>
+    <ion-option *ngFor="let species of speciesList$ | async" 
+
+    detail-push>{{species.name}}</ion-option>
+    </ion-select>
   </ion-item>
 </ion-list>
 
@@ -35,7 +37,8 @@
     </ion-list-header>
   
     <ion-item
-      *ngFor="let bird of birdList$ | async" detail-push navPush="ViewBirdPage"[navParams]="{bird:bird}">
+      *ngFor="let bird of birdsList$ | async" 
+      detail-push navPush="ViewBirdPage"[navParams]="{bird:bird}">
       {{bird.name}}
     </ion-item>
   </ion-list>
